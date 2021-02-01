@@ -1,16 +1,16 @@
 resource "aws_vpc" "vpc" {
-  cidr_block           = "${var.cidr}"
+  cidr_block           = var.cidr
   enable_dns_hostnames = true
 
-  tags = "${merge(
+  tags = merge(
     var.tags,
     map(
-      "Name", "${var.vpc_name}"
+      "Name", var.vpc_name
     )
-  )}"
+  )
 }
 
 resource "aws_internet_gateway" "vpc" {
-  vpc_id = "${aws_vpc.vpc.id}"
-  tags   = "${var.tags}"
+  vpc_id = aws_vpc.vpc.id
+  tags   = var.tags
 }

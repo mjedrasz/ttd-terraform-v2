@@ -16,7 +16,7 @@ variable "override_dynamodb_endpoint" {
 }
 
 locals {
-  dynamodb_endpoint = "${var.override_dynamodb_endpoint != "" ? var.override_dynamodb_endpoint : "https://dynamodb.${var.aws_region}.amazonaws.com"}"
+  dynamodb_endpoint = var.override_dynamodb_endpoint != "" ? var.override_dynamodb_endpoint : "https://dynamodb.${var.aws_region}.amazonaws.com"
 }
 
 variable "table_name" {

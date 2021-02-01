@@ -7,6 +7,6 @@ variable "cidr" {
 }
 
 variable "tags" {
-  type = "map"
+  type = map
   default = {}
 }

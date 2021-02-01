@@ -1,10 +1,9 @@
 provider "template" {
-  version = "~> 2.1"
 }
 
 provider "aws" {
   region  = var.aws_region
-  version = "~> 2.7"
+
 }
 
 terraform {
@@ -71,7 +70,7 @@ resource "aws_route" "private_nat_route" {
 resource "aws_vpc_endpoint" "vpc_endpoint" {
   vpc_id          = module.vpc.id
   service_name    = "com.amazonaws.${var.aws_region}.s3"
-  route_table_ids = ["${module.private_subnet.route_table_ids}"]
+  route_table_ids = [module.private_subnet.route_table_ids]
 }
 
 # Creating a NAT Gateway takes some time. Some services need the internet (NAT Gateway) before proceeding. 
@@ -80,5 +79,5 @@ resource "aws_vpc_endpoint" "vpc_endpoint" {
 # Therefore we use a workaround described here: https://github.com/hashicorp/terraform/issues/1178#issuecomment-207369534
 
 resource "null_resource" "dummy_dependency" {
-  depends_on = ["module.nat"]
+  depends_on = [module.nat]
 }
