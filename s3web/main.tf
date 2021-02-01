@@ -9,7 +9,6 @@ provider "aws" {
 
 
 resource "aws_s3_bucket" "bucket" {
-  region             = var.aws_region
   bucket             = "${var.aws_env}-${var.bucket_name}"
   acl                = "private" # https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl
 
