@@ -42,12 +42,6 @@ resource "aws_cognito_user_pool" "pool" {
     require_uppercase = var.password_require_uppercase
   }
 
-  admin_create_user_config {
-    # workaround for InvalidParameterException: Please use TemporaryPasswordValidityDays in PasswordPolicy instead of UnusedAccountValidityDay
-    # see https://github.com/terraform-providers/terraform-provider-aws/issues/8827
-    unused_account_validity_days = 0
-  }
-
   lambda_config {
     post_confirmation = var.post_confirmation_lambda_arn
   }
