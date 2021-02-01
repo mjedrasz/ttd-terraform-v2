@@ -6,10 +6,7 @@ provider "aws" {
 
 }
 
-terraform {
-  # The configuration for this backend will be filled in by Terragrunt
-  backend "s3" {}
-}
+
 
 resource "aws_ssm_parameter" "user_pool_id" {
   name  = "/${var.aws_env}/cognito/user-pools/user/id"

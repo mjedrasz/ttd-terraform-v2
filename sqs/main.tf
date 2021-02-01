@@ -6,10 +6,7 @@ provider "aws" {
 
 }
 
-terraform {
-  # The configuration for this backend will be filled in by Terragrunt
-  backend "s3" {}
-}
+
 
 resource "aws_sqs_queue" "email_queue" {
   name                        = "${var.aws_env}-email-queue"

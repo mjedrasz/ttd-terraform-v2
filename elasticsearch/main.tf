@@ -6,10 +6,7 @@ provider "aws" {
 
 }
 
-terraform {
-  # The configuration for this backend will be filled in by Terragrunt
-  backend "s3" {}
-}
+
 
 resource "aws_cloudwatch_log_group" "application_logs" {
   name = "/aws/aes/domains/${var.aws_env}-ttd/application-logs"

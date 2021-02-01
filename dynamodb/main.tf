@@ -7,10 +7,7 @@ provider "aws" {
   }
 }
 
-terraform {
-  # The configuration for this backend will be filled in by Terragrunt
-  backend "s3" {}
-}
+
 
 resource "aws_dynamodb_table" "table" {
   name           = "${var.aws_env}-${var.table_name}"

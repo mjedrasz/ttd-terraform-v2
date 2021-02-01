@@ -6,10 +6,7 @@ provider "aws" {
 
 }
 
-terraform {
-  # The configuration for this backend will be filled in by Terragrunt
-  backend "s3" {}
-}
+
 
 resource "aws_route53_record" "assets_record" {
   zone_id = data.aws_route53_zone.public_hosted_zone.zone_id
