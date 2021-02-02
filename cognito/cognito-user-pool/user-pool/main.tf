@@ -25,13 +25,6 @@ resource "aws_cognito_user_pool" "pool" {
     mutable                  = true
     name                     = "email"
     required                 = true
-
-    # need to specify constraints, otherwise the pool is recreated each time
-    # see https://github.com/terraform-providers/terraform-provider-aws/issues/4227
-    string_attribute_constraints {
-      min_length = 5
-      max_length = 40
-    }
   }
 
   password_policy {
