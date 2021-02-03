@@ -31,6 +31,11 @@ variable "write_capacity" {
   description = "Write capacity"
 }
 
+variable "billing_mode" {
+  description = "Billing mode"
+}
+
+
 variable "range_key" {
   description = "Range key"
   default     = ""
