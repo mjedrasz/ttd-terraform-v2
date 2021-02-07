@@ -9,20 +9,25 @@ variable "aws_env" {
 variable "assets_aliases" {
   type        = list
   description = "The list of CNAMES"
+  default     = []
 }
 
 variable "domain" {
   description = "The name of domain"
+  default     = ""
 }
 
 variable "organiser_aliases" {
   type        = list
   description = "The list of CNAMES"
+  default     = []
+
 }
 
 variable "pwa_aliases" {
   type        = list
   description = "The list of CNAMES"
+  default     = []
 }
 
 variable "cache_min_ttl" {

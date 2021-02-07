@@ -5,7 +5,7 @@ module "pwa-ui-distribution" {
   origin_access_identity = data.terraform_remote_state.s3_pwa_ui.outputs.cloudfront_access_identity_path
   aliases                = var.pwa_aliases
   target_origin_id       = data.terraform_remote_state.s3_pwa_ui.outputs.bucket_domain_name
-  acm_certificate_arn    = data.aws_acm_certificate.us-east-1_ssl_certificate.arn
+  acm_certificate_arn    = length(var.pwa_aliases) > 0 ? data.aws_acm_certificate.us-east-1_ssl_certificate[0].arn : ""
   cache_min_ttl          = var.cache_min_ttl
   cache_default_ttl      = var.cache_default_ttl
   cache_max_ttl          = var.cache_max_ttl

@@ -34,6 +34,11 @@ variable "web_client_logout_urls" {
   description = "Moblie client logout urls"
 }
 
+variable "route53" {
+  type = bool
+  description = "Route53 enabled"
+}
+
 variable "tfstate_global_bucket_region" {
   description = "Terraform bucket state region, e.g. eu-central-1"
 }

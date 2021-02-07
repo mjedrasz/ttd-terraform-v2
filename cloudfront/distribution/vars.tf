@@ -21,6 +21,7 @@ variable "target_origin_id" {
 
 variable "acm_certificate_arn" {
   description = "Custom SSL certificate ARN"
+  default = ""
 }
 
 variable "cache_min_ttl" {

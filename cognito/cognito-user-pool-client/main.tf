@@ -16,3 +16,13 @@ data "terraform_remote_state" "cognito_user_pool" {
     region = var.tfstate_global_bucket_region
   }
 }
+
+data "terraform_remote_state" "cloudfront" {
+  backend = "s3"
+  config = {
+    bucket = var.tfstate_global_bucket
+    key    = var.tfstate_cloudfront_bucket
+    region = var.tfstate_global_bucket_region
+  }
+}
+
