@@ -44,10 +44,11 @@ resource "aws_route53_record" "pwa_ui_record" {
   }
 }
 
-resource "aws_ssm_parameter" "asset_record" {
-  name  = "/${var.aws_env}/route53/assets/name"
-  type  = "String"
-  value = aws_route53_record.assets_record.name
+resource "aws_ssm_parameter" "assets_domain_route53" {
+  name      = "/${var.aws_env}/assets/domain"
+  type      = "String"
+  value     = aws_route53_record.assets_record.name
+  overwrite = true
 }
 
 data "aws_route53_zone" "public_hosted_zone" {

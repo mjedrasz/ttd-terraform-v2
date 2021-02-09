@@ -11,7 +11,12 @@ module "assets-distribution" {
   cache_max_ttl          = var.cache_max_ttl
 }
 
-#data "aws_caller_identity" "current" {}
+resource "aws_ssm_parameter" "assets_domain_cloudfront" {
+  name      = "/${var.aws_env}/assets/domain"
+  type      = "String"
+  value     = module.assets-distribution.distribution_domain_name
+  overwrite = true
+}
 
 data "terraform_remote_state" "s3_assets" {
   backend = "s3"
