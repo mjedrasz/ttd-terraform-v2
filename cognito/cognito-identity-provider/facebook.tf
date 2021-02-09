@@ -1,10 +1,10 @@
 
 data "aws_ssm_parameter" "facebook_client_id" {
-  name = "/${var.aws_env}/cognito/identity-provider/facebook/client-id"
+  name = "/${var.aws_env}/cognito/identity-providers/facebook/client-id"
 }
 
 data "aws_ssm_parameter" "facebook_client_secret" {
-  name = "/${var.aws_env}/cognito/identity-provider/facebook/client-secret"
+  name = "/${var.aws_env}/cognito/identity-providers/facebook/client-secret"
 }
 
 module "facebook" {

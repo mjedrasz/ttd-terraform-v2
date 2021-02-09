@@ -9,7 +9,7 @@ module "web_client" {
 #assuming the last element on the list should be used (any preceding urls might be for local environment, eg. http://localhost:8081)
 resource "aws_ssm_parameter" "org_sign_in_callback_url" {
   count     = var.route53 ? 1 : 0
-  name      = "/${var.aws_env}/cognito/user-pool-client/org/sign-in-url"
+  name      = "/${var.aws_env}/cognito/user-pool-clients/org/sign-in-url"
   type      = "String"
   value     = element(var.mobile_client_callback_urls, length(var.mobile_client_callback_urls)-1)
   overwrite = true
@@ -18,7 +18,7 @@ resource "aws_ssm_parameter" "org_sign_in_callback_url" {
 #assuming the last element on the list should be used (any preceding urls might be for local environment, eg. http://localhost:8081)
 resource "aws_ssm_parameter" "org_sign_out_callback_url" {
   count     = var.route53 ? 1 : 0
-  name      = "/${var.aws_env}/cognito/user-pool-client/org/sign-out-url"
+  name      = "/${var.aws_env}/cognito/user-pool-clients/org/sign-out-url"
   type      = "String"
   value     = element(var.mobile_client_logout_urls, length(var.mobile_client_logout_urls)-1)
   overwrite = true
@@ -26,7 +26,7 @@ resource "aws_ssm_parameter" "org_sign_out_callback_url" {
 
 resource "aws_ssm_parameter" "org_sign_in_callback_url_cloudfront" {
   count     = var.route53 ? 0 : 1
-  name      = "/${var.aws_env}/cognito/user-pool-client/org/sign-in-url"
+  name      = "/${var.aws_env}/cognito/user-pool-clients/org/sign-in-url"
   type      = "String"
   value     = "https://${data.terraform_remote_state.cloudfront.outputs.organiser_ui_distribution_domain_name}"
   overwrite = true
@@ -34,14 +34,14 @@ resource "aws_ssm_parameter" "org_sign_in_callback_url_cloudfront" {
 
 resource "aws_ssm_parameter" "org_sign_out_callback_url_cloudfront" {
   count     = var.route53 ? 0 : 1
-  name      = "/${var.aws_env}/cognito/user-pool-client/org/sign-out-url"
+  name      = "/${var.aws_env}/cognito/user-pool-clients/org/sign-out-url"
   type      = "String"
   value     = "https://${data.terraform_remote_state.cloudfront.outputs.organiser_ui_distribution_domain_name}"
   overwrite = true
 }
 
 resource "aws_ssm_parameter" "org_user_pool_client_id" {
-  name  = "/${var.aws_env}/cognito/user-pool-client/org/id"
+  name  = "/${var.aws_env}/cognito/user-pool-clients/org/id"
   type  = "String"
   value = module.web_client.user_pool_client_id
 }

@@ -122,7 +122,7 @@ resource "aws_cognito_identity_pool_roles_attachment" "org" {
 }
 
 resource "aws_ssm_parameter" "org_identity_pool_id" {
-  name  = "/${var.aws_env}/cognito/org-identity-pool/id"
+  name  = "/${var.aws_env}/cognito/identity-pools/org/id"
   type  = "String"
   value = module.org_identity_pool.identity_pool_id
 }

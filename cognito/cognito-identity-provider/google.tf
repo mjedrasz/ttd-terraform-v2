@@ -1,10 +1,10 @@
 
 data "aws_ssm_parameter" "google_client_id" {
-  name = "/${var.aws_env}/cognito/identity-provider/google/client-id"
+  name = "/${var.aws_env}/cognito/identity-providers/google/client-id"
 }
 
 data "aws_ssm_parameter" "google_client_secret" {
-  name = "/${var.aws_env}/cognito/identity-provider/google/client-secret"
+  name = "/${var.aws_env}/cognito/identity-providers/google/client-secret"
 }
 
 module "google" {

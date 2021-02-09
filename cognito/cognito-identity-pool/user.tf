@@ -136,7 +136,7 @@ resource "aws_cognito_identity_pool_roles_attachment" "user" {
 data "aws_caller_identity" "current" {}
 
 resource "aws_ssm_parameter" "user_identity_pool_id" {
-  name  = "/${var.aws_env}/cognito/user-identity-pool/id"
+  name  = "/${var.aws_env}/cognito/identity-pools/user/id"
   type  = "String"
   value = module.user_identity_pool.identity_pool_id
 }
