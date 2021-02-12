@@ -1,13 +1,3 @@
-provider "template" {
-}
-
-provider "aws" {
-  region  = var.aws_region
-
-}
-
-
-
 resource "aws_sqs_queue" "email_queue" {
   name                        = "${var.aws_env}-email-queue"
   delay_seconds               = var.delay_seconds

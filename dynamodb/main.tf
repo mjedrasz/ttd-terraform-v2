@@ -1,14 +1,3 @@
-provider "aws" {
-
-  region  = var.aws_region
-
-  endpoints {
-    dynamodb = local.dynamodb_endpoint
-  }
-}
-
-
-
 resource "aws_dynamodb_table" "table" {
   name           = "${var.aws_env}-${var.table_name}"
   billing_mode   = var.billing_mode

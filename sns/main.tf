@@ -1,14 +1,3 @@
-provider "template" {
-}
-
-provider "aws" {
-  region  = var.aws_region
-
-}
-
-
-
-
 resource "aws_sns_topic" "fanout" {
   name = "${var.aws_env}-fanout"
 }

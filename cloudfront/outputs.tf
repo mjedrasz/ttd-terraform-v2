@@ -1,23 +1,12 @@
-output "organiser_ui_distribution_domain_name" {
-  value = module.organiser-ui-distribution.distribution_domain_name
+output "distribution_domain_name" {
+  value = aws_cloudfront_distribution.distribution.domain_name
 }
 
-output "organiser_ui_distribution_hosted_zone_id" {
-  value = module.organiser-ui-distribution.distribution_hosted_zone_id
+output "distribution_hosted_zone_id" {
+  value = aws_cloudfront_distribution.distribution.hosted_zone_id
 }
 
-output "assets_distribution_domain_name" {
-  value = module.assets-distribution.distribution_domain_name
+output "distribution_id" {
+  value = aws_cloudfront_distribution.distribution.id
 }
 
-output "assets_distribution_hosted_zone_id" {
-  value = module.assets-distribution.distribution_hosted_zone_id
-}
-
-output "pwa_ui_distribution_domain_name" {
-  value = module.pwa-ui-distribution.distribution_domain_name
-}
-
-output "pwa_ui_distribution_hosted_zone_id" {
-  value = module.pwa-ui-distribution.distribution_hosted_zone_id
-}

@@ -1,13 +1,3 @@
-provider "template" {
-}
-
-provider "aws" {
-  region  = var.aws_region
-
-}
-
-
-
 resource "aws_cloudwatch_log_group" "application_logs" {
   name = "/aws/aes/domains/${var.aws_env}-ttd/application-logs"
 }

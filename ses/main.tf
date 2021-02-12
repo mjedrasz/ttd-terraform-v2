@@ -1,13 +1,3 @@
-provider "template" {
-}
-
-provider "aws" {
-  region  = var.aws_region
-
-}
-
-
-
 resource "aws_ses_domain_identity" "ses_domain" {
   domain   = var.domain
 }

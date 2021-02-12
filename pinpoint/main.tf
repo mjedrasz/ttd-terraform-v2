@@ -1,13 +1,3 @@
-provider "template" {
-}
-
-provider "aws" {
-  region  = var.aws_region
-
-}
-
-
-
 resource "aws_pinpoint_app" "pinpoint" {
   name = "${var.aws_env}-ttd"
 }

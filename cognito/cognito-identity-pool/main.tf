@@ -1,44 +1,17 @@
-provider "template" {
-}
+resource "aws_cognito_identity_pool" "pool" {
+  identity_pool_name               = "${var.aws_env}-${var.name}-identity-pool"
+  allow_unauthenticated_identities = true
 
-provider "aws" {
-  region  = var.aws_region
-}
-
-
-
-data "terraform_remote_state" "cognito_user_pool" {
-    backend = "s3"
-    config = {
-        bucket = var.tfstate_global_bucket
-        key    = var.tfstate_cognito_user_pool_bucket
-        region = var.tfstate_global_bucket_region
-    }
-}
-
-data "terraform_remote_state" "cognito_user_pool_client" {
-    backend = "s3"
-    config  = {
-        bucket = var.tfstate_global_bucket
-        key    = var.tfstate_cognito_user_pool_client_bucket
-        region = var.tfstate_global_bucket_region
-    }
-}
-
-data "terraform_remote_state" "s3_assets" {
-  backend = "s3"
-  config = {
-    bucket = var.tfstate_global_bucket
-    key    = var.tfstate_s3_assets_bucket
-    region = var.tfstate_global_bucket_region
+  cognito_identity_providers {
+    client_id               = var.user_pool_client_id
+    provider_name           = "cognito-idp.${var.aws_region}.amazonaws.com/${var.user_pool_id}"
+    server_side_token_check = false
   }
 }
 
-data "terraform_remote_state" "pinpoint" {
-  backend = "s3"
-  config = {
-    bucket = var.tfstate_global_bucket
-    key    = var.tfstate_pinpoint_bucket
-    region = var.tfstate_global_bucket_region
-  }
+resource "aws_ssm_parameter" "identity_pool_id" {
+  name  = "/${var.aws_env}/cognito/identity-pools/${var.name}/id"
+  type  = "String"
+  value = aws_cognito_identity_pool.pool.id
 }
+
