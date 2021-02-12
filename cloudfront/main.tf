@@ -47,8 +47,6 @@ resource "aws_cloudfront_distribution" "distribution" {
   viewer_certificate {
     cloudfront_default_certificate = length(var.aliases) == 0
     acm_certificate_arn    = length(var.aliases) > 0 ? data.aws_acm_certificate.us-east-1_ssl_certificate[0].arn : ""
-    ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1.1_2016"
   }
 
   tags = var.default_tags

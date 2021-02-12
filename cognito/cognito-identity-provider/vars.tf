@@ -18,3 +18,9 @@ variable "attribute_mapping" {
 variable "user_pool_id" {
   description = "Cognito user pool id"
 }
+
+variable "provider_details" {
+  type        = map
+  description = "Provider details"
+  default     = {}
+}
