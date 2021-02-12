@@ -14,9 +14,9 @@ resource "aws_cognito_user_pool" "pool" {
     email_message        = var.verification_email_message
   }
 
-  email_configuration {
-    reply_to_email_address = var.reply_to_email_address
-  }
+  # email_configuration {
+  #   reply_to_email_address = var.reply_to_email_address
+  # }
 
   schema {
     attribute_data_type      = "String"
