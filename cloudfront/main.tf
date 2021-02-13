@@ -45,8 +45,8 @@ resource "aws_cloudfront_distribution" "distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = length(var.aliases) == 0
-    acm_certificate_arn    = length(var.aliases) > 0 ? data.aws_acm_certificate.us-east-1_ssl_certificate[0].arn : ""
+    cloudfront_default_certificate = var.dns_domain == ""
+    acm_certificate_arn            = var.dns_domain == "" ? "" : data.aws_acm_certificate.us-east-1_ssl_certificate[0].arn
   }
 
   tags = var.default_tags
