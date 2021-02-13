@@ -7,7 +7,9 @@ variable "name" {
 }
 
 variable "reply_to_email_address" {
-  default = "Reply to email address for emails with verification codes"
+  description = "Reply to email address for emails with verification codes"
+  default     = 
+
 }
 
 variable "password_minimum_length" {
