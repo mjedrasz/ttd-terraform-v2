@@ -9,7 +9,7 @@ resource "aws_route53_record" "ses_verification_record" {
   name     = "_amazonses.${var.dns_domain}"
   type     = "TXT"
   ttl      = "600"
-  records  = [aws_ses_domain_identity.ses_domain.verification_token]
+  records  = [aws_ses_domain_identity.ses_domain[0].verification_token]
 }
 
 data "aws_route53_zone" "public_hosted_zone" {
