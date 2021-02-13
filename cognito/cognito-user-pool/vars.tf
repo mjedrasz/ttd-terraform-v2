@@ -8,7 +8,7 @@ variable "name" {
 
 variable "reply_to_email_address" {
   description = "Reply to email address for emails with verification codes"
-  default     = 
+  default     = ""
 
 }
 
