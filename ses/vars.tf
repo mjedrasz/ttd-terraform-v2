@@ -8,5 +8,4 @@ variable "public_hosted_zone" {
 
 variable "dns_domain" {
   description = "The name of the DNS domain"
-  default     = ""
 }
