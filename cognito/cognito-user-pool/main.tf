@@ -16,7 +16,7 @@ resource "aws_cognito_user_pool" "pool" {
 
   email_configuration {
     reply_to_email_address = var.reply_to_email_address
-    source_arn             = var.reply_to_email_address == "" ? "" ? data.aws_ssm_parameter.email_source_arn[0].value
+    source_arn             = var.reply_to_email_address == "" ? "" : data.aws_ssm_parameter.email_source_arn[0].value
     email_sending_account  = var.reply_to_email_address == "" ? "COGNITO_DEFAULT" : "DEVELOPER"
   }
 
