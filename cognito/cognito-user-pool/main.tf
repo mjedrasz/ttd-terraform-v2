@@ -16,8 +16,8 @@ resource "aws_cognito_user_pool" "pool" {
 
   email_configuration {
     reply_to_email_address = var.reply_to_email_address
-    source_arn             = data.aws_ssm_parameter.email_source_arn.value
-    email_sending_account  = "DEVELOPER"
+    source_arn             = var.reply_to_email_address == "" ? "" ? data.aws_ssm_parameter.email_source_arn[0].value
+    email_sending_account  = var.reply_to_email_address == "" ? "COGNITO_DEFAULT" : "DEVELOPER"
   }
 
   schema {
@@ -66,5 +66,6 @@ data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
 data "aws_ssm_parameter" "email_source_arn" {
-  name = "/${var.aws_env}/ses/verified-email/arn"
+  count = var.reply_to_email_address == "" ? 0 : 1
+  name  = "/${var.aws_env}/ses/verified-email/arn"
 }
