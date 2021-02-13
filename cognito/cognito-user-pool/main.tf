@@ -14,9 +14,11 @@ resource "aws_cognito_user_pool" "pool" {
     email_message        = var.verification_email_message
   }
 
-  # email_configuration {
-  #   reply_to_email_address = var.reply_to_email_address
-  # }
+  email_configuration {
+    reply_to_email_address = var.reply_to_email_address
+    source_arn             = data.aws_ssm_parameter.email_source_arn.arn
+    email_sending_account  = "DEVELOPER"
+  }
 
   schema {
     attribute_data_type      = "String"
@@ -62,3 +64,7 @@ resource "aws_ssm_parameter" "pool_arn" {
 data "aws_caller_identity" "current" {}
 
 data "aws_region" "current" {}
+
+data "aws_ssm_parameter" "email_source_arn" {
+  name = "/${var.aws_env}/ses/verified-email/arn"
+}

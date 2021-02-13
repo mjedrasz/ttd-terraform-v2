@@ -46,3 +46,4 @@ variable "verification_email_subject" {
 variable "verification_email_message" {
   default = "Your verification code is {####}."
 }
+

@@ -17,3 +17,8 @@ variable "distribution_domain_name" {
 variable "distribution_hosted_zone_id" {
   description = "Cloudfront distribution hosted zone id"
 }
+
+variable "dns_domain" {
+  description = "The name of the DNS domain"
+  default     = ""
+}
