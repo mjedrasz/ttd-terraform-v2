@@ -15,7 +15,7 @@ resource "aws_ssm_parameter" "domain_route53" {
   count     = var.dns_domain == "" ? 0 : 1
   name      = "/${var.aws_env}/s3/${var.name}/domain"
   type      = "String"
-  value     = aws_route53_record.record.name
+  value     = var.cname
   overwrite = true
 }
 
