@@ -6,6 +6,6 @@ variable "public_hosted_zone" {
   description = "Public hosted zone in Route53"
 }
 
-variable "domain" {
-  description = "The name of the domain"
+variable "dns_domain" {
+  description = "The name of the DNS domain"
 }

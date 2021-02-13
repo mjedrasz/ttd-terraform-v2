@@ -1,4 +1,4 @@
-variable "domain" {
+variable "dns_domain" {
   description = "The name of domain"
   default     = "" # empty if no DNS/Route53 setup
 }

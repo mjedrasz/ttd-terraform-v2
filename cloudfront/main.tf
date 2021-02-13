@@ -60,7 +60,7 @@ resource "aws_ssm_parameter" "distribution_cloudfront_domain" {
 }
 
 data "aws_acm_certificate" "us-east-1_ssl_certificate" {
-  count    = var.domain == "" ? 0 : 1
-  domain   = var.domain
+  count    = var.dns_domain == "" ? 0 : 1
+  domain   = var.dns_domain
   provider = aws.us-east-1
 }
